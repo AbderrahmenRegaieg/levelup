@@ -1,0 +1,42 @@
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-intro">
+      <h2>{{ aboutTitle }}</h2>
+      <p>{{ aboutDescription }}</p>
+    </div>
+
+    <div class="team-section">
+      <h3>Meet the Team</h3>
+      <div class="team-grid">
+        <div class="team-member" *ngFor="let member of team">
+          <div class="member-image">
+            <img [src]="'assets/images/team/' + member.image" [alt]="member.name">
+            <div class="social-links">
+              <a *ngIf="member.social.twitter" [href]="member.social.twitter" target="_blank">
+                <i class="icon-twitter"></i>
+              </a>
+              <a *ngIf="member.social.linkedin" [href]="member.social.linkedin" target="_blank">
+                <i class="icon-linkedin"></i>
+              </a>
+              <a *ngIf="member.social.instagram" [href]="member.social.instagram" target="_blank">
+                <i class="icon-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <h4>{{ member.name }}</h4>
+          <p class="role">{{ member.role }}</p>
+          <p class="bio">{{ member.bio }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item" *ngFor="let stat of stats">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

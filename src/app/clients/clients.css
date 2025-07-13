@@ -1,0 +1,195 @@
+.clients-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensures the container takes at least the full viewport height */
+  background: #1a1a2e; /* Dark solid background to match the image's dark theme */
+  color: #ffffff; /* White text for contrast */
+  font-family: 'Inter', sans-serif; /* Using Inter font for consistency */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.8) 70%); /* Subtle radial gradient to mimic logo glow effect */
+    opacity: 0.9;
+    z-index: 0;
+  }
+}
+
+/* Header text styling (e.g., "BRANDS WE'VE WORKED WITH") */
+.header-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Subtle white border */
+  border-radius: 20px; /* Rounded corners */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Spacing between letters */
+  position: relative;
+  z-index: 1;
+}
+
+/* Wrapper for the main content to help center the circle animation */
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limits the maximum width of the content */
+  position: relative;
+  z-index: 1;
+}
+
+/* Container for the animated circle and the central text */
+.circle-animation-container {
+  position: relative; /* Essential for positioning child elements (logos, center text) absolutely */
+  width: 600px; /* Diameter of the circle for desktop */
+  height: 600px; /* Diameter of the circle for desktop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Define a CSS custom property for the radius, which will be updated in media queries */
+  --circle-radius: 250px; /* Default radius for desktop (half of 600px diameter minus logo size) */
+}
+
+/* Styling for the central text content (e.g., "$600M+ Funding Secured") */
+.center-content {
+  text-align: center;
+  z-index: 10; /* Ensures the text appears above the rotating logos */
+}
+
+.funding-secured {
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.click-info {
+  font-size: 0.9rem;
+  opacity: 0.8; /* Slightly transparent */
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+/* The element that contains and rotates all the logos */
+.logo-circle {
+  position: absolute;
+  width: 100%; /* Takes full width of its parent (.circle-animation-container) */
+  height: 100%; /* Takes full height of its parent */
+  border-radius: 50%; /* Makes it a perfect circle */
+  /* Animation for continuous rotation of the entire circle of logos */
+  animation: rotateCircle 30s linear infinite; /* 30 seconds duration, constant speed, loops forever */
+  display: flex; /* Used for initial centering of children before absolute positioning takes over */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keyframe animation definition for the continuous rotation */
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* Rotate to 360 degrees */
+  }
+}
+
+/* Styling for each individual logo wrapper */
+.logo-wrapper {
+  position: absolute; /* Positions each logo relative to the center of .logo-circle */
+  width: 60px; /* Size of the logo container */
+  height: 60px; /* Size of the logo container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Makes the wrapper circular */
+  overflow: hidden; /* Hides any part of the image that might extend beyond the circular wrapper */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle transparent white background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  transition: transform 0.1s ease-out; /* Smooth transition for potential hover effects (not implemented here) */
+  cursor: pointer; /* Indicates it's clickable */
+
+  /*
+    This is the core transform that positions each logo:
+    1. rotate(var(--angle)): Rotates the logo's wrapper around the center of .logo-circle
+       using the angle provided by the Angular component via the --angle CSS variable.
+    2. translate(var(--circle-radius)): Moves the logo outwards from the center by the
+       distance defined in --circle-radius. This sets the radius of the logo circle.
+    3. rotate(calc(-1 * var(--angle))): Counter-rotates the logo itself. This is crucial
+       to keep the logos upright as the main .logo-circle rotates.
+  */
+  transform: rotate(var(--angle)) translate(var(--circle-radius)) rotate(calc(-1 * var(--angle)));
+}
+
+/* Styling for the image inside the logo wrapper */
+.client-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures the entire logo image is visible within its container */
+  border-radius: 50%; /* Makes the image itself circular */
+}
+
+/* Responsive adjustments using media queries */
+@media (max-width: 768px) {
+  .header-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .circle-animation-container {
+    width: 400px; /* Smaller diameter for tablets */
+    height: 400px;
+    --circle-radius: 170px; /* Adjusted radius for tablets (half of 400px diameter minus logo size) */
+  }
+
+  .funding-secured {
+    font-size: 2.5rem;
+  }
+
+  .click-info {
+    font-size: 0.8rem;
+    max-width: 200px;
+  }
+
+  .logo-wrapper {
+    width: 50px; /* Smaller logos */
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-text {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .circle-animation-container {
+    width: 300px; /* Even smaller diameter for mobile */
+    height: 300px;
+    --circle-radius: 120px; /* Adjusted radius for mobile (half of 300px diameter minus logo size) */
+  }
+
+  .funding-secured {
+    font-size: 2rem;
+  }
+
+  .click-info {
+    font-size: 0.7rem;
+    max-width: 180px;
+  }
+
+  .logo-wrapper {
+    width: 40px; /* Smallest logos */
+    height: 40px;
+  }
+}
