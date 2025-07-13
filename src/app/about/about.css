@@ -1,0 +1,167 @@
+.about {
+  background: #1a1a2e; /* Dark solid background to match the image's dark theme */
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.8) 70%); /* Subtle radial gradient to mimic logo glow effect */
+    opacity: 0.9;
+    z-index: 0;
+  }
+
+  .about-intro {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+    
+    h2 {
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+    }
+  }
+  
+  .team-section {
+    margin-bottom: 80px;
+    
+    h3 {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      
+      &:after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: var(--accent-color);
+        margin: 15px auto 0;
+      }
+    }
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+  
+  .team-member {
+    text-align: center;
+    
+    .member-image {
+      position: relative;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+      
+      .social-links {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        
+        a {
+          color: var(--secondary-color);
+          font-size: 1.2rem;
+          transition: color 0.3s ease;
+          
+          &:hover {
+            color: var(--accent-color);
+          }
+        }
+      }
+      
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+        
+        .social-links {
+          opacity: 1;
+        }
+      }
+    }
+    
+    h4 {
+      margin-bottom: 5px;
+    }
+    
+    .role {
+      color: var(--accent-color);
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    
+    .bio {
+      color: var(--dark-gray);
+    }
+  }
+  
+  .stats-section {
+    background-color: #2e2e3f; /* Lighter shade for contrast, replacing --light-gray */
+    padding: 60px;
+    border-radius: 8px;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .stat-item {
+    text-align: center;
+    
+    .stat-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    .stats-section {
+      padding: 40px 20px;
+    }
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
