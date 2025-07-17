@@ -23,11 +23,20 @@
              style="--delay: 0.2s"
              required>
       
+      <input type="url" 
+             id="social" 
+             name="social"
+             placeholder="Your Social Media Profile (Optional)" 
+             class="form-input animate-fade" 
+             style="--delay: 0.3s"
+             pattern="https?://.+" 
+             title="Please include http:// or https://">
+      
       <textarea id="message" 
                 name="message"
                 placeholder="Your Message" 
                 class="form-textarea animate-fade" 
-                style="--delay: 0.3s"
+                style="--delay: 0.4s"
                 required></textarea>
       
       <button type="submit" 
