@@ -56,6 +56,7 @@ export class ContactComponent implements AfterViewInit {
         body: JSON.stringify({
           name: formData.get('name'),
           email: formData.get('email'),
+          social: formData.get('social'),
           message: formData.get('message')
         })
       });
