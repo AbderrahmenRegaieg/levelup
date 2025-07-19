@@ -23,7 +23,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   };
  openEmail() {
   try {
-    const companyEmail = 'contact@yourcompany.com';
+    const companyEmail = 'habib@levelupagencies.com';
     const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(companyEmail)}`;
     window.open(mailtoLink, '_blank');
   } catch (error) {
