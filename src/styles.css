@@ -59,16 +59,16 @@ h1, h2, h3, h4 {
     transform: translateY(-2px);
   }
   
-  &-outline {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    
-    &:hover {
-      background-color: var(--primary);
-      color: var(--secondary);
-    }
+&-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  
+  &:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
   }
+}
 }
 
 /* Responsive */

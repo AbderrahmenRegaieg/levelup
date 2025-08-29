@@ -319,7 +319,7 @@
     color: white;
   }
   
-  &-progress {
+  .notification-progress {
     position: absolute;
     bottom: 0;
     left: 0;
