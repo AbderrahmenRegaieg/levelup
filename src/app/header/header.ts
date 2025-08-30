@@ -11,7 +11,28 @@ export class HeaderComponent implements AfterViewInit {
   isScrolled = false;
   lastScrollPosition = 0;
   isHidden = false;
- 
+   isMobileMenuOpen: boolean = false;
+  isMobileView: boolean = false; // To track if we're in a mobile breakpoint
+
+ ngOnInit(): void {
+    this.checkMobileView(); // Check on init
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkMobileView(); // Check on window resize
+  }
+
+  checkMobileView() {
+    this.isMobileView = window.innerWidth <= 768; // Adjust this breakpoint as needed
+    if (!this.isMobileView) {
+      this.isMobileMenuOpen = false; // Close menu if we resize to desktop
+    }
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
   constructor(private router: Router) {}
 
   ngAfterViewInit() {
