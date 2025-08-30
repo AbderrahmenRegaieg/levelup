@@ -11,6 +11,16 @@ export class HeaderComponent implements AfterViewInit {
   isScrolled = false;
   lastScrollPosition = 0;
   isHidden = false;
+  isMenuOpen = false;
+    // Toggle mobile menu
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  // Close menu when navigating
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 
   constructor(private router: Router) {}
 

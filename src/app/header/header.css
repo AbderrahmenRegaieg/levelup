@@ -255,3 +255,44 @@
     }
   }
 }
+/* Hide hamburger on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    z-index: 1100;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(15, 23, 42, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .contact-button {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 15px;
+  }
+}
