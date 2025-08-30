@@ -236,3 +236,98 @@
     margin: 10px 0;
   }
 }
+/* --- Default styles for larger screens (desktop first approach) --- */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px; /* Larger padding for desktop */
+  background-color: var(--dark-bg); /* Assuming you have this variable */
+  color: var(--secondary);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 1.8em;
+  margin-left: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px; /* Space between navigation items */
+}
+
+.nav-item {
+  font-size: 1em;
+  padding: 5px 0;
+}
+
+.contact-button {
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+/* --- Media Queries for Smaller Screens (e.g., tablets and mobile phones) --- */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 15px 20px; /* Reduce padding */
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+    justify-content: center; /* Center items or adjust as needed */
+  }
+
+  .logo-text {
+    font-size: 1.4em; /* Make logo text smaller */
+    margin-left: 5px;
+  }
+
+  .nav-links {
+    /* For smaller screens, you often want to hide these and use a hamburger menu */
+    /* For a quick fix, let's just make them smaller and reduce gap */
+    gap: 15px; /* Reduce space between nav items */
+    font-size: 0.9em; /* Smaller font for nav items */
+    margin-top: 10px; /* Add some top margin if wrapping */
+    width: 100%; /* Take full width if they wrap */
+    justify-content: center; /* Center nav items */
+  }
+
+  .nav-item {
+    padding: 3px 0;
+  }
+
+  .contact-button {
+    padding: 8px 15px; /* Smaller button padding */
+    font-size: 0.9em; /* Smaller button font */
+    margin-top: 10px; /* Add some top margin if wrapping */
+  }
+
+  /* If the menu items are still too wide, you might consider: */
+  /* Hiding the text and only showing icons if you have them */
+  /* or converting to a stacked layout, or a hamburger menu. */
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .header-container {
+    padding: 10px 15px; /* Even smaller padding */
+  }
+
+  .logo-text {
+    font-size: 1.2em; /* Even smaller logo text */
+  }
+
+  .nav-links {
+    /* At this size, a hamburger menu is almost always required for a good UX */
+    /* If not using a hamburger, you'll need drastic measures */
+    display: none; /* Temporarily hide nav links - requires a hamburger menu to show them */
+  }
+
+  .contact-button {
+    font-size: 0.8em;
+    padding: 6px 12px;
+    margin-top: 0; /* Remove top margin if nav links are hidden */
+  }
+}

@@ -8,7 +8,9 @@
     </a>
   </div>
  
-
+<button class="hamburger-menu-toggle" (click)="toggleMobileMenu()" *ngIf="isMobileView">
+    <img src="assets/icons/hamburger.svg" alt="Menu">
+  </button>
   <nav class="nav-menu">
     <a (click)="scrollTo('hero')" 
        class="nav-link" 
