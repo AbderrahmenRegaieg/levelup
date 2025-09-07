@@ -61,7 +61,7 @@ export class HeaderComponent implements AfterViewInit {
 
   openEmail() {
     try {
-      const companyEmail = 'habib@levelupagencies.com';
+      const companyEmail = 'habib@levelupagence.com';
       const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(companyEmail)}`;
       window.open(mailtoLink, '_blank');
     } catch (error) {
