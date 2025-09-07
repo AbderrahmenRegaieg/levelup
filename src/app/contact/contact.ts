@@ -47,7 +47,7 @@ export class ContactComponent implements AfterViewInit {
     
     try {
       const formData = new FormData(form);
-      const response = await fetch('https://formsubmit.co/ajax/abderrahmen@levelupagence.com', {
+      const response = await fetch('https://formsubmit.co/ajax/habib@levelupagence.com', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
