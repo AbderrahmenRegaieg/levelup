@@ -1,0 +1,25 @@
+<section id="clients" class="clients-section">
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Our Clients</h2>
+    </div>
+    <div class="clients-scroll-container">
+      <div class="clients-track">
+        <div *ngFor="let client of displayClients" class="client-card" (click)="openLink(client.instagram)">
+          <a [href]="client.instagram" target="_blank" rel="noopener noreferrer">
+            <div class="client-image">
+              <img [src]="client.image" [alt]="client.name">
+            </div>
+            <div class="client-info">
+              <h3>{{ client.name }}</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

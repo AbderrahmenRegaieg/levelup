@@ -28,6 +28,17 @@
       <span>Team</span>
       <div class="link-underline"></div>
     </a>
+    <a (click)="scrollTo('portfolio')" 
+       class="nav-link" 
+       [class.active]="isActive('portfolio')">
+      <span>Portfolio</span>
+      <div class="link-underline"></div>
+    </a><a (click)="scrollTo('clients')" 
+       class="nav-link" 
+       [class.active]="isActive('clients')">
+      <span>Clients</span>
+      <div class="link-underline"></div>
+    </a>
     <a (click)="scrollTo('contact')" 
        class="nav-link" 
        [class.active]="isActive('contact')">

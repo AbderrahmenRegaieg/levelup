@@ -1,0 +1,26 @@
+<section id="portfolio" class="portfolio-section">
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Our Best Edits</h2>
+        </div>
+        <div class="video-grid">
+            <div *ngFor="let video of videos; let i = index" class="video-card" [class.playing]="playingIndex === i"
+                (click)="toggleVideo(i)">
+                <div class="video-wrapper">
+                    <video #videoPlayer [src]="video.videoUrl" loop muted playsinline preload="metadata">
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>{{ video.title }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
