@@ -24,7 +24,7 @@ export class ServicesComponent implements AfterViewInit {
   }
   openEmail() {
   try {
-    const companyEmail = 'contact@yourcompany.com';
+    const companyEmail = 'abderrahmen@levelupagence.com';
     const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(companyEmail)}`;
     window.open(mailtoLink, '_blank');
   } catch (error) {
