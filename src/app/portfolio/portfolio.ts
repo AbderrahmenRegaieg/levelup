@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PortfolioComponent {
     videos = [
-     
+
         { title: 'Iman Video', videoUrl: 'second_version_iman.mp4' },
         { title: 'Caspar video', videoUrl: 'casper_video.mp4' },
         { title: 'Phil video', videoUrl: 'Sequence 01 (2).mp4' },
