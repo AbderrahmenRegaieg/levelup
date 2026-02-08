@@ -9,12 +9,24 @@ import { CommonModule } from '@angular/common';
     styleUrl: './portfolio.css'
 })
 export class PortfolioComponent {
-    videos = [
-
-        { title: 'Iman Video', videoUrl: 'second_version_iman.mp4' },
-        { title: 'Caspar video', videoUrl: 'casper_video.mp4' },
-        { title: 'Phil video', videoUrl: 'Sequence 01 (2).mp4' },
-        { title: 'Melvin video ', videoUrl: 'Sequence 04 (1).mp4' },
+   videos = [
+        { 
+          title: 'Iman Video', 
+          videoUrl: 'https://media.githubusercontent.com/media/AbderrahmenRegaieg/levelup/gh-pages/second_version_iman.mp4' 
+        },
+        { 
+          title: 'Caspar video', 
+          videoUrl: 'https://media.githubusercontent.com/media/AbderrahmenRegaieg/levelup/gh-pages/casper_video.mp4' 
+        },
+        { 
+          title: 'Phil video', 
+          // Note: "Sequence 01 (2).mp4" needs URL encoding for spaces and parentheses
+          videoUrl: 'https://media.githubusercontent.com/media/AbderrahmenRegaieg/levelup/gh-pages/Sequence%2001%20(2).mp4' 
+        },
+        { 
+          title: 'Melvin video ', 
+          videoUrl: 'https://media.githubusercontent.com/media/AbderrahmenRegaieg/levelup/gh-pages/Sequence%2004%20(1).mp4' 
+        },
     ];
 
     @ViewChildren('videoPlayer') videoPlayers!: QueryList<ElementRef<HTMLVideoElement>>;
