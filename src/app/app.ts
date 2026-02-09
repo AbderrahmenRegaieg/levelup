@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./header/header";
 import { HeroComponent } from "./hero/hero";
-import { ContactComponent } from "./contact/contact";
 import { Footer } from './footer/footer';
 import { ServicesComponent } from './servises/servises';
 import { TeamComponent } from './team/team';
@@ -11,7 +10,7 @@ import { BookingComponent } from './booking/booking';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, HeroComponent, ServicesComponent, PortfolioComponent, TeamComponent, ClientsComponent, BookingComponent, ContactComponent, Footer],
+  imports: [HeaderComponent, HeroComponent, ServicesComponent, PortfolioComponent, TeamComponent, ClientsComponent, BookingComponent,  Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
