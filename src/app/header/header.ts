@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,34 +6,34 @@ import { Router } from '@angular/router';
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements AfterViewInit, OnInit {
   @ViewChild('header') header!: ElementRef;
   isScrolled = false;
   lastScrollPosition = 0;
   isHidden = false;
-   isMobileMenuOpen: boolean = false;
-  isMobileView: boolean = false; // To track if we're in a mobile breakpoint
+  isMenuOpen = false;
+  isMobileView = false;
 
- ngOnInit(): void {
-    this.checkMobileView(); // Check on init
+  ngOnInit(): void {
+    this.checkMobileView();
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkMobileView(); // Check on window resize
+  @HostListener('window:resize')
+  onResize() {
+    this.checkMobileView();
   }
 
   checkMobileView() {
-    this.isMobileView = window.innerWidth <= 768; // Adjust this breakpoint as needed
+    this.isMobileView = window.innerWidth <= 768;
     if (!this.isMobileView) {
-      this.isMobileMenuOpen = false; // Close menu if we resize to desktop
+      this.isMenuOpen = false;
     }
   }
 
-  toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngAfterViewInit() {
     const observer = new IntersectionObserver((entries) => {
@@ -49,6 +49,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   scrollTo(section: string) {
+    this.isMenuOpen = false;
     // First navigate to home to ensure we're on the right page
     this.router.navigate(['/']).then(() => {
       // Then scroll to the section
@@ -73,14 +74,14 @@ export class HeaderComponent implements AfterViewInit {
   @HostListener('window:scroll')
   onWindowScroll() {
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    
+
     // Hide/show based on scroll direction
     if (currentScroll > this.lastScrollPosition && currentScroll > 100) {
       this.isHidden = true;
     } else {
       this.isHidden = false;
     }
-    
+
     this.lastScrollPosition = currentScroll;
     this.isScrolled = currentScroll > 50;
 
@@ -89,22 +90,22 @@ export class HeaderComponent implements AfterViewInit {
       const logo = this.header.nativeElement.querySelector('.logo');
       const navMenu = this.header.nativeElement.querySelector('.nav-menu');
       const contactButton = this.header.nativeElement.querySelector('.contact-button');
-      
+
       if (logo) logo.style.transform = `translateY(${Math.min(currentScroll * 0.2, 10)}px)`;
       if (navMenu) navMenu.style.transform = `translateY(${Math.min(currentScroll * 0.15, 8)}px)`;
       if (contactButton) contactButton.style.transform = `translateY(${Math.min(currentScroll * 0.1, 5)}px)`;
     }
   }
   isActive(section: string): boolean {
-  if (typeof window === 'undefined') return false;
-  
-  const element = document.getElementById(section);
-  if (!element) return false;
-  
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top <= (window.innerHeight / 2) && 
-    rect.bottom >= (window.innerHeight / 2)
-  );
-}
+    if (typeof window === 'undefined') return false;
+
+    const element = document.getElementById(section);
+    if (!element) return false;
+
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight / 2) &&
+      rect.bottom >= (window.innerHeight / 2)
+    );
+  }
 }
